@@ -11,7 +11,7 @@
       "distribution": "internal",
       "android": { "buildType": "apk" },
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://gatekeeper-backend.onrender.com"
+        "EXPO_PUBLIC_API_URL": "https://gate-keepers.onrender.com"
       }
     }
   }
