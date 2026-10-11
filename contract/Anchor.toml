@@ -1,0 +1,19 @@
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+# Run `anchor keys sync` once so this ID matches your program keypair.
+[programs.devnet]
+gatekeeper_bonds = "9AgLUBrzQHkaQWyqwtThjAERYKv4tgtnoxrhpSCvZoqM"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "echo 'no tests yet'"
