@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env*
+!.env.example
+
+# State & database files
+data/
+*.backup*.json
+checkins.json
+state.json
+
+# Private keys, keypairs, wallet files, certificates
+id.json
+*keypair*.json
+*wallet*.json
+*.key
+*.pem
+*.jks
+*.p8
+*.p12
+
+# Build outputs & Expo
+dist/
+build/
+target/
+.expo/
+web-build/
+android/
+ios/
+
+# Logs
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# OS & tool cache
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+.claude/
+
+# Stale app/ copy (leave out of commit)
+/app/
