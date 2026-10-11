@@ -64,7 +64,20 @@ export function loadState(): State {
   const currentDir = getDataDir();
   if (cache && lastDataDir === currentDir) return cache;
   const stateFile = path.join(currentDir, 'state.json');
-  if (!fs.existsSync(stateFile)) throw new Error(`state.json missing in ${currentDir}. Run \`npm run setup\` first.`);
+  if (!fs.existsSync(stateFile)) {
+    const initial: State = {
+      skrMint: process.env.SKR_MINT ?? '2gNBETYiBwxXHC7q86GVMoTB7aSQmzyg3XHrVZ3watUg',
+      treasury: process.env.TREASURY ?? 'CmQYSCix7g4XtpJzfGZT12RAUmzL55iZXMHbdr4Ai7Bj',
+      tree: process.env.TREE ?? '7cxyWzRjyGunSQYVFtEQ4SMymNpjo8dqZoTSeQFA662S',
+      events: [],
+      minted: {},
+      tickets: {},
+      holders: {},
+      bonds: [],
+    };
+    fs.mkdirSync(currentDir, { recursive: true });
+    fs.writeFileSync(stateFile, JSON.stringify(initial, null, 2));
+  }
   const s = JSON.parse(fs.readFileSync(stateFile, 'utf8')) as State;
   s.tickets ??= {};
   s.holders ??= {};
