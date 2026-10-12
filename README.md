@@ -54,7 +54,7 @@ backend/    Express server: mint, verify, bonds, organizer auth
 gatekeeper-app/   Expo Android app with Mobile Wallet Adapter
 ```
 
-**Contract.** Program ID `9AgLUBrzQHkaQWyqwtThjAERYKv4tgtnoxrhpSCvZoqM` on devnet. Instructions: `initialize`, `lock_transfer_bond`, `resolve_bond`, `burn_for_vip`, `init_stake_config`, `set_stake_amount`, `stake_organizer`, `unstake_organizer`, `slash_organizer`. Accounts are PDAs seeded `config`, `vault`, `bond`, `vip`, `stake_cfg`, `stake_vault` and `organizer`.
+**Contract.** Program ID `G65C3XsAhvJkYiE4GEcY5jJuabsWVDL2dXJ1D8wbY3ST` on devnet. Instructions: `initialize`, `lock_transfer_bond`, `resolve_bond`, `burn_for_vip`, `init_stake_config`, `set_stake_amount`, `stake_organizer`, `unstake_organizer`, `slash_organizer`. Accounts are PDAs seeded `config`, `vault`, `bond`, `vip`, `stake_cfg`, `stake_vault` and `organizer`.
 
 **Backend.** The backend pays transaction fees. It creates one Merkle tree per event, sized to the event's capacity. It reads wallet contents through the Helius DAS API. Organizers log in by signing a message with their wallet. The server then issues a short-lived signed token and checks on every organizer request that the wallet still has SKR staked.
 
