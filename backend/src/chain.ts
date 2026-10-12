@@ -18,7 +18,7 @@ export const payer = Keypair.fromSecretKey(
   ),
 );
 
-export const umi = createUmi(env.rpcUrl).use(mplBubblegum()).use(dasApi());
+export const umi = createUmi(env.rpcUrl, 'confirmed').use(mplBubblegum()).use(dasApi());
 umi.use(keypairIdentity(umi.eddsa.createKeypairFromSecretKey(payer.secretKey)));
 
 export const pk = (s: string, label = 'address') => {
@@ -58,7 +58,7 @@ export async function sendAsBackend(ixs: TransactionInstruction[]): Promise<stri
   }).compileToLegacyMessage();
   const tx = new VersionedTransaction(msg);
   tx.sign([payer]);
-  const sig = await connection.sendTransaction(tx);
+  const sig = await connection.sendTransaction(tx, { preflightCommitment: 'confirmed' });
   await connection.confirmTransaction({ signature: sig, blockhash, lastValidBlockHeight }, 'confirmed');
   return sig;
 }

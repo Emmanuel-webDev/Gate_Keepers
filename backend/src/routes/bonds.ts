@@ -128,7 +128,7 @@ bonds.post('/transfer/prepare', async (req, res, next) => {
       ...proof,
       leafOwner: createNoopSigner(umiKey(from)),
       newLeafOwner: umiKey(to),
-    }).buildWithLatestBlockhash(umi);
+    }).buildWithLatestBlockhash(umi, { commitment: 'confirmed' });
     const transferTx = Buffer.from(umi.transactions.serialize(await umi.identity.signTransaction(built))).toString('base64');
 
     st.bonds = st.bonds.filter((b) => !(b.assetId === assetId && b.status === 'pending'));
@@ -190,7 +190,9 @@ bonds.post('/vip/prepare', async (req, res, next) => {
 bonds.post('/relay', async (req, res, next) => {
   try {
     if (typeof req.body?.tx !== 'string') throw new HttpError(400, 'tx (base64) required');
-    const signature = await connection.sendRawTransaction(Buffer.from(req.body.tx, 'base64'));
+    const signature = await connection.sendRawTransaction(Buffer.from(req.body.tx, 'base64'), {
+      preflightCommitment: 'confirmed',
+    });
     const r = await connection.confirmTransaction(signature, 'confirmed');
     if (r.value.err) throw new HttpError(400, 'Transaction failed on-chain: ' + JSON.stringify(r.value.err));
     res.json({ signature });
