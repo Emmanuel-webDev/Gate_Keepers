@@ -24,6 +24,14 @@ A ticket is a compressed NFT (Metaplex Bubblegum) minted into the buyer's wallet
 
 Organizers have their own side of the app: mint tickets for an event, scan at the door, and flag resales. To get that access an organizer has to lock SKR.
 
+## When an organizer flags a resale
+
+The program can't see what a buyer pays, so slashing a bond is the organizer's decision. A flag has to come before the organizer resolves the bonds after the event, because resolving refunds them.
+
+Flag a transfer when there is evidence of a paid resale above the event's policy: an asking price above face value, a public listing, a chat screenshot, or a buyer at the door saying they paid a markup. Don't flag gifts, swaps between friends, or sales at or below face value. A slash can't be undone, so suspicion alone isn't enough.
+
+Organizers should state the policy up front, for example "selling at face value or less is fine." The bond deters scalping by making it expensive. It doesn't prove a sale took place.
+
 ## How SKR is used
 
 SKR does three jobs in the program. None of them is decorative: each one is a lock or a spend that changes what a user can do.
@@ -93,8 +101,14 @@ The bond is a deterrent, and it has gaps.
 
 The goal is to make scalping unprofitable at scale for the person doing it, while leaving normal transfers between friends cheap and unchanged.
 
-## Links
+## Download and install
 
-- Demo video:
-- Android APK:
-- Hosted backend:
+Android APK: https://github.com/Emmanuel-webDev/Gate_Keepers/releases/download/v1.0.0/gatekeeper.apk
+
+Open the link on an Android phone, download the file and tap it to install. Android may ask you to allow installs from this source, because the app isn't on the Play Store. If Play Protect warns, choose "Install anyway".
+
+You also need a Solana wallet app installed and set to devnet. The app talks to it through Mobile Wallet Adapter. The backend pays transaction fees, and the app has a faucet for the mock SKR token.
+
+On an emulator, drag `gatekeeper.apk` onto the emulator window.
+
+Source: https://github.com/Emmanuel-webDev/Gate_Keepers
