@@ -1,5 +1,4 @@
 export const API = process.env.EXPO_PUBLIC_API_URL ?? 'http://10.0.2.2:8787'; // 10.0.2.2 = Android emulator -> host
-export const RPC_URL = process.env.EXPO_PUBLIC_RPC_URL ?? 'https://devnet.helius-rpc.com/?api-key=d6cb786e-8ab0-4520-9f87-2dbb45449ac5';
 
 let token = '';
 let onUnauthorized: () => void = () => {};
